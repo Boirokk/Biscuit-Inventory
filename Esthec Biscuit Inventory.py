@@ -14,8 +14,13 @@ y = []
 
 # add excel to list
 for index in range(sheet.nrows):
-    x.append(sheet.cell_value(index, 8))
-    y.append(sheet.cell_value(index, 10))
+    if type(sheet.cell_value(index, 8)) == float or type(sheet.cell_value(index, 8)) == int:
+        if sheet.cell_value(index, 8) == 0.0:
+            pass
+        else:
+             x.append(sheet.cell_value(index, 8))
+             y.append(sheet.cell_value(index, 10))
+print(x,y)
 
 
 move = 400
@@ -27,19 +32,19 @@ pyautogui.press('delete')
 
 
 for numx in range(24):
-    if x[numx] != '':
-        move += 50
-        pyautogui.typewrite('rectangle')
-        pyautogui.press('enter')
-        pyautogui.click(move,269)
-        pyautogui.typewrite('d')
-        pyautogui.press('enter')
-        pyautogui.typewrite(str(x[numx + 3]))
-        pyautogui.press('enter')
-        pyautogui.typewrite(str(y[numx + 3]))
-        pyautogui.press('enter')
-        pyautogui.click(move,269)
-        
+
+    move += 50
+    pyautogui.typewrite('rectangle')
+    pyautogui.press('enter')
+    pyautogui.click(move, 269)
+    pyautogui.typewrite('d')
+    pyautogui.press('enter')
+    pyautogui.typewrite(str(x[numx]))
+    pyautogui.press('enter')
+    pyautogui.typewrite(str(y[numx]))
+    pyautogui.press('enter')
+    pyautogui.click(move, 269)
+
 pyautogui.hotkey('ctrl', 's')
 pyautogui.press('enter')
 
