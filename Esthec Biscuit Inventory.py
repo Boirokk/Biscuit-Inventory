@@ -15,7 +15,6 @@ worksheet = xlrd.open_workbook(WORKBOOK_LOCATION)
 sheet = worksheet.sheet_by_index(1)
 
 # Create lists for coordinates
-
 x = []
 
 y = []
@@ -33,7 +32,7 @@ for index in range(sheet.nrows):
 
 
 
-movex = 500
+movex = 400
 movey = 250
 count = 0
 
@@ -47,11 +46,12 @@ except PermissionError:
     pass
 
 try:
+
     for numx in range(len(x)):
-        if count == 14:
+        if count == 40:
             count = 0
-            movex = 500
-            movey += 50
+            movex = 400
+            movey += 40
         pyautogui.typewrite('rectangle')
         pyautogui.press('enter')
 
@@ -63,7 +63,7 @@ try:
         pyautogui.typewrite('d')
 
         pyautogui.press('enter')
-        pyautogui.press('enter')
+       
 
         print('Drawing rectangle: ' + str(int(x[numx])) + ' X ' + str(int(y[numx])))
 
@@ -78,7 +78,7 @@ try:
         except PermissionError:
             pass
 
-        movex += 105
+        movex += 50
         count +=1
     pyautogui.hotkey('ctrl', 's')
     time.sleep(3)
